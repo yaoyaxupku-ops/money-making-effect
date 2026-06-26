@@ -1,0 +1,88 @@
+{
+  "assetTiers": [
+    {
+      "threshold": 100000,
+      "label": "实力起航认证",
+      "buttonLabel": "10万认证",
+      "level": "10万级资产",
+      "frame": "青铜实力头像框",
+      "reward": "88元基金体验金抽奖资格"
+    },
+    {
+      "threshold": 500000,
+      "label": "进阶资产认证",
+      "buttonLabel": "50万认证",
+      "level": "50万级资产",
+      "frame": "白银进阶头像框",
+      "reward": "188元基金体验金抽奖资格"
+    },
+    {
+      "threshold": 1000000,
+      "label": "百万实力认证",
+      "buttonLabel": "百万认证",
+      "level": "百万级资产",
+      "frame": "黄金百万头像框",
+      "reward": "腾讯微证券定制礼盒"
+    },
+    {
+      "threshold": 10000000,
+      "label": "千万资产认证",
+      "buttonLabel": "千万认证",
+      "level": "千万级资产",
+      "frame": "铂金千万头像框",
+      "reward": "年度高端投资复盘权益"
+    },
+    {
+      "threshold": 100000000,
+      "label": "亿元荣誉认证",
+      "buttonLabel": "亿元认证",
+      "level": "亿元级资产",
+      "frame": "黑金亿元头像框",
+      "reward": "腾讯微证券荣誉认证礼包"
+    }
+  ],
+  "operationRules": [
+    {
+      "id": "buy-rise",
+      "title": "慧眼买入",
+      "threshold": 0.04,
+      "metric": "买入后上涨 5.46%",
+      "headline": "这次买点，踩得很准",
+      "body": "收盘后回看，你成功捕捉泰晶科技上涨行情。",
+      "certification": "腾讯微证券实盘认证"
+    },
+    {
+      "id": "sell-drop",
+      "title": "精准止盈",
+      "threshold": 0.04,
+      "metric": "卖出后回落 4.28%",
+      "headline": "这次止盈，落袋漂亮",
+      "body": "卖出后股价回落，节奏判断获得认证。",
+      "certification": "腾讯微证券实盘认证"
+    },
+    {
+      "id": "t-trade",
+      "title": "做T小能手",
+      "threshold": 0.03,
+      "metric": "做T收益 3.21%",
+      "headline": "一买一卖，节奏在线",
+      "body": "当日低吸高抛，成功做出正向差价。",
+      "certification": "腾讯微证券实盘认证"
+    },
+    {
+      "id": "single-profit",
+      "title": "单笔高光",
+      "threshold": 0.05,
+      "metric": "本次收益 6.07%",
+      "headline": "这笔收益，值得晒一下",
+      "body": "本次交易收益超过 5%，获得实盘高光认证。",
+      "certification": "腾讯微证券实盘认证"
+    }
+  ],
+  "share": {
+    "h5Url": "https://stockapp.finance.qq.com/cert/123456",
+    "verificationCode": "123456",
+    "fallbackCopy": "微信搜索“腾讯微证券”，输入认证码 123456，查看本次认证。",
+    "shortFallbackCopy": "打开腾讯微证券，输入认证码 123456 验真。"
+  }
+}

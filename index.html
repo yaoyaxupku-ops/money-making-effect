@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>微证券端内赚钱氛围打造 Demo</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="project-overview" aria-label="项目背景">
+        <div class="overview-copy">
+          <span>微证券端内赚钱氛围打造</span>
+          <h1>把用户自发晒图，升级成平台认证的资产与实盘高光分享</h1>
+          <p>微证券社区本身就是“看图说话”的股票讨论场，K线截图、持仓截图、交易记录截图是主要信息载体。项目目标是把用户已有的晒盘面、晒操作行为产品化，形成端内氛围、端外传播和验真回流。</p>
+        </div>
+        <div class="overview-stats">
+          <div><strong>88.36万</strong><span>近 30 天下单用户</span></div>
+          <div><strong>31%</strong><span>10 万以上资产用户占比</span></div>
+          <div><strong>27.42万</strong><span>10 万以上资产用户规模</span></div>
+          <div><strong>6.5%</strong><span>50 万以上资产用户占比</span></div>
+          <div><strong>6成</strong><span>主贴由行情/技术与实盘操作构成</span></div>
+          <div><strong>40%</strong><span>图片约为行情 K 线截图</span></div>
+          <div><strong>23%</strong><span>图片约为持仓/委托截图</span></div>
+        </div>
+      </section>
+
+      <section class="stage">
+        <div class="toolbar" aria-label="页面切换">
+          <button class="toolbar-button active" data-screen="asset">资产页</button>
+          <button class="toolbar-button" data-screen="asset-moments">朋友圈效果</button>
+          <button class="toolbar-button" data-screen="asset-landing">承接页</button>
+          <button class="toolbar-button" data-screen="kline">神操作</button>
+        </div>
+
+        <div class="phone" aria-label="微证券交互原型">
+          <div class="status-bar"><span>9:41</span><span>5G 87%</span></div>
+
+          <section class="screen active" id="asset-screen">
+            <header class="app-header">
+              <div class="brand-mark">↗</div>
+              <strong>腾讯微证券</strong>
+              <button class="round-icon" aria-label="更多">•••</button>
+            </header>
+
+            <article class="asset-card">
+              <div class="broker-row">
+                <span class="broker-logo">招</span>
+                <strong>招商证券</strong>
+                <span class="muted">牛卡号：5860415295</span>
+                <span class="eye">◉</span>
+              </div>
+              <div class="profit-row">
+                <div>
+                  <span class="muted">今日盈亏</span>
+                  <strong class="red">+8,620.35</strong>
+                </div>
+                <div>
+                  <span class="muted">持仓盈亏</span>
+                  <strong class="green">+126,800.52</strong>
+                </div>
+              </div>
+              <div class="asset-total">
+                <div>
+                  <span class="muted">总资产</span>
+                  <strong id="asset-amount">1,268,800.52</strong>
+                </div>
+                <button id="asset-cert-button" class="cert-button">百万认证</button>
+              </div>
+              <div class="asset-split">
+                <span><i class="dot red-dot"></i>证券及理财 1,008,200.25</span>
+                <span><i class="dot gold-dot"></i>现金资产 260,600.27</span>
+              </div>
+            </article>
+
+            <nav class="quick-grid" aria-label="资产页功能">
+              <button>⇄<span>快速买卖</span></button>
+              <button>￥<span>出金入金</span></button>
+              <button>◷<span>交易记录</span></button>
+              <button>▣<span>全部</span></button>
+              <button>▱<span>盈亏分析</span></button>
+              <button>IPO<span>一键打新</span></button>
+              <button>券<span>国债逆回购</span></button>
+              <button>☷<span>更多工具</span></button>
+            </nav>
+
+            <article class="holding-card">
+              <div class="tabs"><strong>持仓分布</strong><span>今日委托(2)</span><span>条件单</span></div>
+              <div class="holding-row"><span>泰晶科技</span><strong class="red">+6.07%</strong><em>持仓 42,000</em></div>
+              <div class="holding-row"><span>中证2000ETF</span><strong class="green">-0.71%</strong><em>持仓 180,000</em></div>
+            </article>
+          </section>
+
+          <section class="screen" id="asset-moments-screen">
+            <header class="wechat-header"><button>‹</button><strong>朋友圈</strong><span>◎</span></header>
+            <article class="moment-post">
+              <div class="avatar">姚</div>
+              <div class="moment-body">
+                <strong>Yao</strong>
+                <p>今天拿到腾讯微证券百万实力认证，留个纪念。</p>
+                <div class="moment-share-card">
+                  <div class="cert-mini">
+                    <span>腾讯微证券认证</span>
+                    <strong>百万实力认证</strong>
+                    <em>认证码 123456 · 点击验真</em>
+                  </div>
+                  <div>
+                    <strong>我的资产实力已通过认证</strong>
+                    <span>来自腾讯微证券</span>
+                  </div>
+                </div>
+                <small>1分钟前  腾讯微证券</small>
+              </div>
+            </article>
+            <article class="moment-post ghost">
+              <div class="avatar blue">陈</div>
+              <div class="moment-body">
+                <strong>Chen</strong>
+                <p>这个认证可以点进去验真，比普通截图靠谱很多。</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="screen" id="asset-landing-screen">
+            <header class="app-header">
+              <div class="brand-mark">↗</div>
+              <strong>腾讯微证券</strong>
+              <button class="round-icon" aria-label="更多">•••</button>
+            </header>
+            <article class="landing-hero">
+              <span>腾讯微证券验真结果</span>
+              <div class="positive-visual small">
+                <div class="seal">证</div>
+                <i></i><i></i><i></i>
+              </div>
+              <h1>百万实力认证有效</h1>
+              <p>该分享内容来自腾讯微证券，认证码 123456 已通过校验。</p>
+            </article>
+            <section class="landing-list">
+              <div><span>认证等级</span><strong>百万级资产</strong></div>
+              <div><span>认证时间</span><strong>2026-06-25 15:02</strong></div>
+              <div><span>隐私保护</span><strong>未展示精确资产</strong></div>
+            </section>
+            <div class="landing-actions">
+              <button>查看微证券行情</button>
+              <button>打开腾讯微证券</button>
+            </div>
+          </section>
+
+          <section class="screen" id="kline-screen">
+            <div class="kline-reference-bg" aria-label="微证券K线页背景">
+              <article class="operation-popover small" id="operation-popover">
+                <div class="operation-mascot">↗</div>
+                <div class="operation-user">单枪匹马的日夜</div>
+                <h2>做T小能手</h2>
+                <div class="operation-chart-card">
+                  <strong>泰晶科技</strong>
+                  <div class="operation-chart-line">
+                    <span class="trade-dot buy-dot">买</span>
+                    <span class="trade-dot sell-dot">卖</span>
+                    <em>+6.07%</em>
+                  </div>
+                  <div class="operation-axis"><span>09:30</span><span>11:30</span><span>15:00</span></div>
+                </div>
+                <p class="operation-quote">买入后上涨 5.46%，这次买点踩得很准。</p>
+                <div class="operation-share-row">
+                  <button><b>↗</b><span>分享给朋友</span></button>
+                  <button><b>◎</b><span>分享到朋友圈</span></button>
+                  <button><b>▣</b><span>保存图片</span></button>
+                </div>
+                <button class="donation-entry">
+                  赚了做点好事，捐一笔
+                </button>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <aside class="demo-context" aria-label="项目说明">
+        <section class="context-page-panel" aria-label="当前页面说明">
+          <article class="context-detail active" data-context="asset">
+            <h2>资产认证页</h2>
+            <p>在资产页总资产旁展示认证入口，达到 10万、50万、100万、1000万、1亿等门槛后触发不同等级。</p>
+            <p>本页重点验证入口位置：认证按钮贴近总资产，用户理解成本最低，也方便承接资产成就弹窗与微信分享组件。</p>
+          </article>
+          <article class="context-detail" data-context="asset-moments">
+            <h2>朋友圈效果页</h2>
+            <p>展示用户分享到朋友圈后的卡片形态，强调“认证码 + 腾讯微证券来源”，降低普通截图的造假疑虑。</p>
+            <p>朋友圈承接的是轻量传播，核心不是晒精确金额，而是展示“百万级资产已认证”的可信身份。</p>
+          </article>
+          <article class="context-detail" data-context="asset-landing">
+            <h2>承接验真页</h2>
+            <p>外部用户点击朋友圈链接后进入验真页，验证资产等级有效，同时承接行情、开户和打开微证券。</p>
+            <p>这里承担端外自然流量回流：先验证真伪，再引导查看行情、打开微证券或继续开户交易。</p>
+          </article>
+          <article class="context-detail" data-context="kline">
+            <h2>神操作页</h2>
+            <p>收盘后回到 K 线页，如果当天有买入后上涨、卖出后下跌、做 T 收益等高光操作，生成可分享弹窗。</p>
+            <p>该页沿用社区“看图说话”的表达方式：用户名称、鼓励语、股票名称、走势截图和分享组件组成一张可传播内容卡。</p>
+            <div class="context-extension">
+              <h3>回暖金扩展思路</h3>
+              <p>神操作弹窗底部只放轻量入口：“捐一笔公益，点亮回暖金池”。更完整的规则放到讲解区或后续落地页。</p>
+              <p>合规边界：用户捐赠进入公益项目；回暖金由平台及合作方专项支持，不来自用户公益捐款。</p>
+              <p>亏损侧承接：收盘后发布当天认证实盘亏损贴；ETF 专场只面向活动前已持有且当日亏损用户。</p>
+            </div>
+          </article>
+        </section>
+      </aside>
+    </main>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden>
+      <section class="asset-cert-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="close" id="close-modal" aria-label="关闭">×</button>
+        <span class="modal-kicker">腾讯微证券资产认证</span>
+        <h1 id="modal-title">已获百万实力认证</h1>
+        <p id="modal-subtitle">你的百万级资产已通过腾讯微证券认证</p>
+        <div class="positive-visual">
+          <div class="seal">证</div>
+          <i></i><i></i><i></i>
+          <strong>百万级资产</strong>
+        </div>
+        <div class="benefits" id="modal-benefits">
+          <span>评论区专属黄金百万头像框</span>
+          <span>腾讯微证券认证标识，支持链接验真</span>
+          <span>获得腾讯微证券定制礼盒抽奖资格</span>
+        </div>
+        <div class="wechat-share-sheet">
+          <button data-channel="wechat"><b>↗</b><span>分享给朋友</span><em>发给微信好友，点击可验真</em></button>
+          <button data-channel="moments"><b>◎</b><span>分享到朋友圈</span><em>自带微证券 H5 链接</em></button>
+          <button data-channel="save"><b>▣</b><span>保存图片</span><em>图片含认证码与二维码</em></button>
+        </div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
