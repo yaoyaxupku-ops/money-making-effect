@@ -111,6 +111,7 @@ button {
 .toolbar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
   width: 390px;
   padding: 4px;
   border-radius: 8px;
@@ -118,17 +119,19 @@ button {
 }
 
 .toolbar-button {
-  min-height: 38px;
+  min-height: 36px;
   border-radius: 6px;
   background: transparent;
   color: #526078;
-  font-size: 13px;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .toolbar-button.active {
   background: #fff;
   color: var(--text);
   font-weight: 700;
+  box-shadow: 0 2px 6px rgba(18, 28, 45, 0.08);
 }
 
 .phone {
@@ -159,6 +162,10 @@ button {
 
 .screen.active {
   display: block;
+}
+
+#asset-screen {
+  position: relative;
 }
 
 .app-header,
@@ -349,13 +356,20 @@ button {
 }
 
 .cert-button {
-  min-width: 92px;
-  height: 34px;
-  padding: 0 12px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, #ffe1a3, #c88727);
-  color: #4a2a05;
-  font-weight: 800;
+  min-width: 76px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid #e2bd6a;
+  border-radius: 13px;
+  background: linear-gradient(180deg, #fff8e3, #fff1cf);
+  color: #8a570b;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.cert-button:hover {
+  background: linear-gradient(180deg, #fff5d4, #ffe8b8);
 }
 
 .asset-split {
@@ -429,6 +443,10 @@ button {
   padding: 16px;
   background: #fff;
   border-bottom: 1px solid var(--line);
+}
+
+.moment-post[hidden] {
+  display: none;
 }
 
 .moment-post.ghost {
@@ -618,11 +636,42 @@ button {
 
 .operation-chart-card {
   width: 100%;
-  padding: 8px 8px 6px;
+  padding: 6px 8px 4px;
   border-radius: 7px;
-  background: linear-gradient(180deg, #ffe8e9, #fff 80%);
-  border: 1px solid #ffd1d4;
+  background: linear-gradient(180deg, #fff5f5, #fff 80%);
+  border: 1px solid #ffd8db;
   text-align: left;
+}
+
+.operation-chart-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.operation-chart-head strong {
+  color: #2a3243;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.operation-chart-head em {
+  color: #d64242;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.operation-chart-svg {
+  width: 100%;
+  height: 76px;
+}
+
+.operation-chart-svg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .operation-chart-card strong {
@@ -705,9 +754,9 @@ button {
 .operation-quote {
   margin: 0;
   color: #5f6b83;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.35;
-  text-align: left;
+  text-align: center;
 }
 
 .operation-share-row {
@@ -751,6 +800,291 @@ button {
   font-size: 10px;
   line-height: 22px;
   text-align: center;
+}
+
+.donation-corner {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  z-index: 2;
+  border: 1px solid #f0d68b;
+  background: #fffdf3;
+  color: #9a6811;
+  font-size: 10px;
+  line-height: 18px;
+  min-height: 18px;
+  padding: 0 7px;
+  border-radius: 999px;
+}
+
+.asset-operation-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: rgba(20, 29, 44, 0.2);
+}
+
+.asset-operation-overlay[hidden],
+.asset-operation-popover[hidden] {
+  display: none;
+}
+
+.asset-operation-popover {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  z-index: 6;
+  display: grid;
+  gap: 7px;
+  justify-items: center;
+  width: 250px;
+  padding: 10px 12px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 14px 34px rgba(18, 28, 45, 0.22);
+  transform: translateX(-50%);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.operation-close {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  color: #748096;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.asset-operation-popover .operation-user {
+  padding: 0;
+  color: #2f3748;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.asset-operation-popover h2 {
+  margin: 0;
+  color: #d64242;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.operation-headline {
+  margin: -3px 0 0;
+  color: #6a758a;
+  font-size: 11px;
+  text-align: center;
+}
+
+.asset-operation-popover .operation-chart-line {
+  height: 68px;
+}
+
+.asset-operation-popover .operation-share-row {
+  gap: 5px;
+  margin-top: 0;
+  width: 100%;
+}
+
+.asset-operation-popover .operation-share-row button {
+  min-height: 42px;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 7px;
+  background: #f4f6fa;
+  color: #526078;
+  font-size: 9px;
+}
+
+.asset-operation-popover .operation-share-row b {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  color: #16a34a;
+}
+
+.operation-tool-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+}
+
+.tool-chip {
+  min-height: 24px;
+  padding: 0 6px;
+  border: 1px solid #d8e0eb;
+  border-radius: 12px;
+  background: #f7f9fc;
+  color: #4f5b73;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.tool-chip:hover {
+  border-color: #c6d2e3;
+  background: #eef3fa;
+}
+
+.tool-chip.active {
+  border-color: #2f72ff;
+  background: #2f72ff;
+  color: #fff;
+}
+
+.asset-operation-popover .donation-entry {
+  /* 捐一笔现在用 donation-corner 绝对定位到右上 */
+  justify-self: end;
+}
+
+.community-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+.community-header strong {
+  font-size: 18px;
+}
+
+.community-header span {
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.community-share-post {
+  margin: 12px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.community-user {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.community-user span {
+  display: block;
+  margin-top: 2px;
+  color: #8a94a7;
+  font-size: 11px;
+}
+
+.community-share-post > p {
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.original-operation-image {
+  padding: 13px;
+  border: 1px solid #f3c8cb;
+  background: #fffafb;
+}
+
+.original-operation-image > span {
+  color: var(--red);
+  font-size: 11px;
+}
+
+.original-operation-image h2 {
+  margin: 7px 0 3px;
+  font-size: 20px;
+}
+
+.original-operation-image > strong {
+  color: #59657b;
+  font-size: 12px;
+}
+
+.share-chart {
+  position: relative;
+  height: 130px;
+  margin-top: 10px;
+  border-top: 1px solid #e4e9f0;
+  border-bottom: 1px solid #e4e9f0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.share-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.share-buy,
+.share-sell {
+  display: none;
+}
+
+.community-tool-link {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 10px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px 11px;
+  border: 1px solid #b9ceec;
+  background: #edf4ff;
+  color: #3268b2;
+  text-decoration: none;
+}
+
+.community-tool-link span { color: #7a869b; font-size: 10px; }
+.community-tool-link strong { font-size: 14px; }
+.community-tool-link b { grid-row: 1 / 3; grid-column: 2; font-size: 11px; }
+
+.original-operation-image.compact {
+  margin-top: 8px;
+  padding: 10px;
+}
+
+.original-operation-image.compact .share-chart {
+  height: 92px;
+}
+
+.operation-return-card {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 10px;
+  border-left: 4px solid #11866f;
+  background: #e9f7f3;
+}
+
+.operation-return-card span { color: #6f7b8f; font-size: 10px; }
+.operation-return-card strong { font-size: 14px; }
+.operation-return-card em { color: #11866f; font-size: 11px; font-style: normal; }
+
+.verification-scope {
+  margin: 10px 18px;
+  color: #7b8699;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.image-verification-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: #f5f7fa;
+  color: #6c778c;
+  font-size: 10px;
 }
 
 .demo-context {
@@ -926,13 +1260,15 @@ button {
   display: inline-block;
   margin-top: 24px;
   color: #9a6811;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
 }
 
 .asset-cert-modal h1 {
-  margin: 8px 0 6px;
-  font-size: 28px;
+  margin: 6px 0 4px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
 }
 
 .asset-cert-modal p {
@@ -1016,6 +1352,28 @@ button {
   text-align: left;
 }
 
+.modal-perks {
+  position: relative;
+  margin: 4px 18px 14px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #fff7e0;
+  color: #8a570b;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.modal-foot-note {
+  position: relative;
+  margin: 0 22px 18px !important;
+  color: #a8b1c3 !important;
+  font-size: 11px !important;
+  text-align: center;
+  line-height: 1.45;
+}
+
 .benefits span {
   padding: 10px 12px;
   border-radius: 8px;
@@ -1076,6 +1434,200 @@ button {
 
 .wechat-share-sheet.compact button {
   min-height: 62px;
+}
+
+/* ---------- 朋友圈切换 tab ---------- */
+.moments-switch {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px 0;
+  background: #fff;
+}
+
+.moments-tab {
+  flex: 1;
+  min-height: 30px;
+  border-radius: 6px;
+  background: #f1f3f8;
+  color: #5f6b83;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.moments-tab.active {
+  background: #2b3448;
+  color: #fff;
+}
+
+/* ---------- 朋友圈卡片 ---------- */
+.moments-feed {
+  display: grid;
+  gap: 0;
+  background: #fff;
+}
+
+.moments-image {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.moments-image-kicker {
+  color: #d64242;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* 资产认证朋友圈原图：金色调，证书感 */
+.moments-image.cert-image {
+  background: linear-gradient(140deg, #fff5d6 0%, #fffefb 60%, #fff1d0 100%);
+  border: 1px solid #ecd28b;
+  text-align: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.cert-image-seal {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin: 4px auto 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe48d, #c9851e);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+  box-shadow: 0 6px 14px rgba(185, 115, 12, 0.25);
+}
+
+.cert-image-level {
+  margin-top: 4px;
+  color: #7a4a05;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.cert-image-meta {
+  color: #9a6811;
+  font-size: 11px;
+  font-style: normal;
+}
+
+/* 神操作朋友圈原图：白底分时图，完整展示 */
+.moments-image.operation-image {
+  background: #fff;
+  border: 1px solid #ffd1d4;
+}
+
+.operation-image-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.operation-image-head h3 {
+  margin: 0;
+  color: #2a3243;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.operation-image-head em {
+  color: #d64242;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.moments-share-chart {
+  width: 100%;
+  height: 156px;
+}
+
+.moments-share-chart svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.operation-image-foot {
+  display: flex;
+  justify-content: space-between;
+  color: #8b95a8;
+  font-size: 11px;
+}
+
+/* 朋友圈 H5 链接卡（资产认证 + 神操作 共用样式） */
+.moment-link-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e1e6ee;
+  border-radius: 6px;
+  background: #f5f7fa;
+  text-decoration: none;
+  color: inherit;
+}
+
+.moment-link-card:hover {
+  background: #eef2f7;
+}
+
+.moment-link-thumb {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ffe48d, #c9851e);
+  color: #fff;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.moment-link-thumb.green {
+  background: linear-gradient(135deg, #6dd4a3, #11866f);
+}
+
+.moment-link-card strong {
+  display: block;
+  color: #2a3243;
+  font-size: 14px;
+}
+
+.moment-link-card span {
+  color: #8b95a8;
+  font-size: 11px;
+}
+
+/* ---------- 资产认证弹窗副注 ---------- */
+.modal-sub-note {
+  position: relative;
+  margin: 4px 24px 0 !important;
+  color: #97a0b3 !important;
+  font-size: 12px !important;
+}
+
+/* ---------- Toast 轮播过渡 ---------- */
+.daily-profit-toast.rotating {
+  opacity: 0;
+  transform: translateY(-2px);
+}
+
+/* ---------- 让旧的 operation-chart-line CSS 假图样式不再绘制 ---------- */
+.operation-chart-line:empty::before,
+.operation-chart-line:empty::after {
+  display: none;
 }
 
 .wechat-share-sheet.compact b {
