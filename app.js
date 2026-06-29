@@ -33,6 +33,10 @@ function bindInteractions() {
   });
 
   document.getElementById("asset-cert-button").addEventListener("click", openAssetModal);
+  document.getElementById("daily-profit-share").addEventListener("click", () => {
+    const toast = document.getElementById("daily-profit-toast");
+    toast.classList.add("dismissed");
+  });
   document.getElementById("close-modal").addEventListener("click", closeModal);
   document.getElementById("modal-backdrop").addEventListener("click", (event) => {
     if (event.target.id === "modal-backdrop") closeModal();

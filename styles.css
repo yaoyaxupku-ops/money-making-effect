@@ -266,13 +266,73 @@ button {
 }
 
 .profit-row {
-  padding: 18px 0 12px;
+  position: relative;
+  padding: 44px 0 12px;
 }
 
-.profit-row div,
+.profit-row > div,
 .asset-total div {
   display: grid;
   gap: 5px;
+}
+
+.profit-label-line {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.daily-profit-share-anchor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.daily-profit-share {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: transparent;
+  color: #8994aa;
+  font-size: 17px;
+  line-height: 20px;
+}
+
+.daily-profit-toast {
+  position: absolute;
+  bottom: 30px;
+  left: -52px;
+  z-index: 2;
+  padding: 7px 10px;
+  border: 1px solid #f0c679;
+  border-radius: 5px;
+  background: #fff8e9;
+  box-shadow: 0 5px 14px rgba(118, 78, 12, 0.12);
+  color: #8b5b12;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.daily-profit-toast::after {
+  position: absolute;
+  bottom: -5px;
+  left: 58px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid #f0c679;
+  border-bottom: 1px solid #f0c679;
+  background: #fff8e9;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.daily-profit-toast.dismissed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-3px);
 }
 
 .profit-row strong {
