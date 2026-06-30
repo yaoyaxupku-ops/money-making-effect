@@ -592,18 +592,34 @@ button {
   background-color: #fff;
 }
 
-/* ---------- 模拟微证券首页（神操作分享回流承接） ---------- */
-.homepage-reference-bg {
-  position: relative;
-  height: 100%;
-  background-image: url("./微证券首页.jpg");
+/* ---------- 个股承接页（神操作分享 / 社区工具回流） ---------- */
+.stock-landing-bg {
+  position: absolute;
+  inset: 0;
   background-size: 370px auto;
   background-position: center top;
   background-repeat: no-repeat;
   background-color: #fff;
 }
 
-.homepage-tool-toast {
+.stock-landing-bg.kline {
+  background-image: url("./微证券k线页.png");
+}
+
+.stock-landing-bg.kline-chips {
+  background-image: url("./微证券k线+筹码页.jpg");
+}
+
+.stock-landing-bg[hidden] {
+  display: none;
+}
+
+#stock-landing-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.stock-landing-toast {
   position: absolute;
   top: 96px;
   left: 50%;
@@ -619,36 +635,48 @@ button {
   box-shadow: 0 12px 28px rgba(18, 28, 45, 0.18);
   backdrop-filter: blur(8px);
   border: 1px solid #ffd8db;
+  z-index: 2;
 }
 
-.homepage-toast-thumb {
+.stock-landing-toast-thumb {
   display: grid;
   place-items: center;
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #6dd4a3, #11866f);
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
 }
 
-.homepage-toast-body {
+.stock-landing-toast-thumb.green {
+  background: linear-gradient(135deg, #6dd4a3, #11866f);
+}
+
+.stock-landing-toast-thumb.brand {
+  background: linear-gradient(135deg, #ff7a78, #d94236);
+}
+
+.stock-landing-toast-body {
   display: grid;
   gap: 2px;
+  min-width: 0;
 }
 
-.homepage-toast-body strong {
+.stock-landing-toast-body strong {
   color: #2a3243;
   font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.homepage-toast-body span {
+.stock-landing-toast-body span {
   color: #8b95a8;
   font-size: 11px;
 }
 
-.homepage-tool-toast b {
+.stock-landing-toast b {
   color: #2f72ff;
   font-size: 18px;
   font-weight: 700;

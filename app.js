@@ -72,17 +72,29 @@ function bindInteractions() {
   document.querySelectorAll("[data-moments-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      // 资产认证 H5 → 验真承接页；神操作 H5 → 模拟首页
-      const target = link.dataset.momentsLink === "operation" ? "homepage" : "asset-landing";
-      jumpToScreen(target);
+      // 资产认证 H5 → 验真承接页；神操作 H5 → 个股承接页（K 线 / K 线+筹码 二选一）
+      if (link.dataset.momentsLink === "operation") {
+        jumpToStockLanding(state.opToolState || "with");
+      } else {
+        jumpToScreen("asset-landing");
+      }
+    });
+  });
+
+  // 社区分享卡里的"参考工具"链接，点了直接落到 K 线+筹码视图
+  document.querySelectorAll("[data-community-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      jumpToStockLanding(link.dataset.communityLink === "kline-chips" ? "with" : "without");
     });
   });
 
   setOperationVariant(state.operationId);
+  // 默认演示"选了主力筹码"的状态，让朋友圈神操作卡有完整钩子文案
+  setOpToolState("with");
 }
 
 function jumpToScreen(screen) {
-  // 找工具栏按钮就触发；首页屏没有工具栏入口，直接切 screen + context
   const trigger = document.querySelector(`.toolbar-button[data-screen="${screen}"]`);
   if (trigger) {
     trigger.click();
@@ -95,7 +107,38 @@ function jumpToScreen(screen) {
   updateContext(screen);
 }
 
+function jumpToStockLanding(stateName) {
+  // 切到 stock-landing 屏，并按"是否带工具"切换底图和 toast
+  document.querySelectorAll(".toolbar-button").forEach((b) => b.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === "stock-landing-screen");
+  });
+  updateContext("stock-landing");
+
+  const withTool = stateName === "with";
+  document.querySelector('[data-landing-bg="kline"]').hidden = withTool;
+  document.querySelector('[data-landing-bg="kline-chips"]').hidden = !withTool;
+
+  const title = document.getElementById("stock-landing-title");
+  const sub = document.getElementById("stock-landing-sub");
+  const thumb = document.getElementById("stock-landing-thumb");
+  if (withTool) {
+    title.textContent = "主力筹码看泰晶科技";
+    sub.textContent = "从 TA 的分享而来 · 已为你切到筹码视角";
+    thumb.textContent = "筹";
+    thumb.classList.remove("brand");
+    thumb.classList.add("green");
+  } else {
+    title.textContent = "打开腾讯微证券，了解泰晶科技";
+    sub.textContent = "从 TA 的朋友圈神操作分享而来";
+    thumb.textContent = "看";
+    thumb.classList.remove("green");
+    thumb.classList.add("brand");
+  }
+}
+
 function setOpToolState(stateName) {
+  state.opToolState = stateName;
   document.querySelectorAll(".op-tool-state-tab").forEach((tab) => {
     const active = tab.dataset.opToolState === stateName;
     tab.classList.toggle("active", active);
@@ -104,21 +147,18 @@ function setOpToolState(stateName) {
   const title = document.getElementById("op-link-title");
   const sub = document.getElementById("op-link-sub");
   const thumb = document.getElementById("op-link-thumb");
-  const toastTitle = document.getElementById("homepage-toast-title");
   if (stateName === "with") {
-    title.textContent = 'TA 本次参考了"主力筹码"';
-    sub.textContent = "打开腾讯微证券，查看同款工具";
-    thumb.textContent = "工";
+    title.textContent = "主力筹码看泰晶科技";
+    sub.textContent = "打开腾讯微证券 · 查看同款视角";
+    thumb.textContent = "筹";
     thumb.classList.remove("brand");
     thumb.classList.add("green");
-    toastTitle.textContent = "你看到的同款工具 · 主力筹码";
   } else {
-    title.textContent = "TA 在腾讯微证券完成的实盘操作";
-    sub.textContent = "打开腾讯微证券，查看更多";
-    thumb.textContent = "↗";
+    title.textContent = "打开腾讯微证券，了解泰晶科技";
+    sub.textContent = "TA 在腾讯微证券完成的实盘操作";
+    thumb.textContent = "看";
     thumb.classList.remove("green");
     thumb.classList.add("brand");
-    toastTitle.textContent = "看 TA 完成实盘操作的微证券";
   }
 }
 

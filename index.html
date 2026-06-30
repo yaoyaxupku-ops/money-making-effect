@@ -139,7 +139,7 @@
                 <span>原始神操作图片</span><h2>做T小能手</h2><strong>泰晶科技 · 做T收益 +3.21%</strong>
                 <div class="share-chart" id="community-share-chart"></div>
               </div>
-              <a class="community-tool-link" href="#"><span>本次参考工具</span><strong>主力筹码</strong><b>查看工具 →</b></a>
+              <a class="community-tool-link" href="#" data-community-link="kline-chips"><span>本次参考视角</span><strong>主力筹码看泰晶科技</strong><b>打开 →</b></a>
             </article>
           </section>
 
@@ -200,10 +200,10 @@
                     <button class="op-tool-state-tab" data-op-tool-state="without" role="tab" aria-selected="false">未选工具</button>
                   </div>
                   <a class="moment-link-card" href="#" data-moments-link="operation">
-                    <div class="moment-link-thumb green" id="op-link-thumb">工</div>
+                    <div class="moment-link-thumb green" id="op-link-thumb">看</div>
                     <div>
-                      <strong id="op-link-title">TA 本次参考了"主力筹码"</strong>
-                      <span id="op-link-sub">打开腾讯微证券，查看同款工具</span>
+                      <strong id="op-link-title">主力筹码看泰晶科技</strong>
+                      <span id="op-link-sub">打开腾讯微证券 · 查看同款视角</span>
                     </div>
                   </a>
                   <small>1分钟前  腾讯微证券</small>
@@ -240,16 +240,17 @@
             </div>
           </section>
 
-          <section class="screen" id="homepage-screen">
-            <div class="homepage-reference-bg" aria-label="微证券首页背景">
-              <div class="homepage-tool-toast" id="homepage-tool-toast">
-                <div class="homepage-toast-thumb">工</div>
-                <div class="homepage-toast-body">
-                  <strong id="homepage-toast-title">你看到的同款工具 · 主力筹码</strong>
-                  <span>从 TA 的朋友圈神操作分享而来</span>
-                </div>
-                <b>›</b>
+          <section class="screen" id="stock-landing-screen">
+            <!-- 两层底图：默认 K 线页，带工具时切换到 K 线+筹码页 -->
+            <div class="stock-landing-bg kline" data-landing-bg="kline"></div>
+            <div class="stock-landing-bg kline-chips" data-landing-bg="kline-chips" hidden></div>
+            <div class="stock-landing-toast" id="stock-landing-toast">
+              <div class="stock-landing-toast-thumb" id="stock-landing-thumb">看</div>
+              <div class="stock-landing-toast-body">
+                <strong id="stock-landing-title">打开腾讯微证券，了解泰晶科技</strong>
+                <span id="stock-landing-sub">从 TA 的朋友圈神操作分享而来</span>
               </div>
+              <b>›</b>
             </div>
           </section>
 
@@ -293,22 +294,23 @@
             <p>本次参考工具用 3 个 chip 横排直接露出（主力资金、主力筹码、波段宝），用户点选即生效，再次点击取消；"捐一笔"作为右上角轻量入口，避免与底部分享操作堆叠。</p>
             <div class="context-extension"><h3>公益入口说明</h3><p>"赚了做点好事，捐一笔"为探索项，需公益、法务与合规评估；后续也可调整到资产分析页，不与单次神操作强绑定。</p></div>
           </article>
-          <article class="context-detail" data-context="operation-community"><h2>社区分享</h2><p>端内社区使用”用户自己的文字 + 原始神操作图片 + 用户主动选择的参考工具链接”。未选择工具时，工具链接整块不展示。</p></article>
+          <article class="context-detail" data-context="operation-community"><h2>社区分享</h2><p>端内社区使用"用户自己的文字 + 原始神操作图片 + 用户主动选择的参考工具链接"。工具链接是"用 X 看个股"形态（如"主力筹码看泰晶科技"），点击直接落到 K 线+对应工具视图；未选择工具时，工具链接整块不展示。</p></article>
           <article class="context-detail" data-context="moments">
             <h2>朋友圈分享</h2>
-            <p>朋友圈承接两种动机：资产认证（带认证码 + 点击验真，强调可信身份）和神操作（纯原始图片 + 独立回流链接卡片，强调”查看同款工具”的回流钩子）。顶部按钮可在两种卡片之间切换。</p>
-            <p>资产认证朋友圈卡核心不是晒精确金额，而是展示”百万级资产已认证”的可信身份；神操作朋友圈卡的钩子是工具回流，没有参考工具时改为股票行情入口。</p>
+            <p>朋友圈承接两种动机：资产认证（带认证码 + 点击验真，强调可信身份）和神操作（原始图片 + 独立回流链接卡片，承接的是<strong>个股 K 线页</strong>而非工具详情页）。顶部按钮可在两种卡片之间切换。</p>
+            <p>资产认证朋友圈卡核心不是晒精确金额，而是展示"百万级资产已认证"的可信身份；神操作朋友圈卡选了工具时引导观众"用主力筹码看泰晶科技"，未选工具时引导"打开腾讯微证券，了解泰晶科技"，钩子都落在个股上。</p>
           </article>
           <article class="context-detail" data-context="asset-landing">
             <h2>承接验真页（资产认证专用）</h2>
             <p>外部用户点击<strong>朋友圈资产认证 H5 卡</strong>进入这里。主结论是"这张分享图来自腾讯微证券"——验证的是图片本身的来源和完整性，不替用户的当前资产数据做权威背书。截图显示的资产等级标注为"用户自报"，避免越权。</p>
-            <p>这里只承接资产认证一种来路；神操作分享走另一个承接（见下方"模拟首页"），不在这页验真。</p>
+            <p>这里只承接资产认证一种来路；神操作分享走另一个承接（见下方"个股承接页"），不在这页验真。</p>
           </article>
-          <article class="context-detail" data-context="homepage">
-            <h2>承接首页（神操作分享专用）</h2>
-            <p>神操作的验真必要性低于资产认证（走势 + 买卖点 + 收益是一条可校验的链，PS 难度高，观众更关心方法而非真伪）。因此朋友圈神操作 H5 卡不再跳验真页，直接跳微证券首页，承接"种草 → 拉新"的回流闭环。</p>
-            <p>顶部 toast 是端外用户点进来时的轻量引导："你看到的同款工具 · 主力筹码"；如果分享时未选工具，toast 改为通用引导"看 TA 完成实盘操作的微证券"。toast 之外的首页内容保持原生，避免劝退。</p>
-            <p>"腾讯微证券实盘认证"作为分享图上的角标，是 brand 信号，不引出独立验真页，保持轻量。</p>
+          <article class="context-detail" data-context="stock-landing">
+            <h2>个股承接页（神操作 / 社区工具回流专用）</h2>
+            <p>神操作的验真必要性低于资产认证（走势 + 买卖点 + 收益是一条可校验链，PS 难度高，观众更关心方法而非真伪），因此朋友圈神操作 H5 卡不走验真路径，直接落到分享提到的<strong>个股 K 线页</strong>——观众点进来时脑子里装的就是这只股票，承接路径最短。</p>
+            <p>未选工具时：底图是普通 K 线页，toast 写"打开腾讯微证券，了解泰晶科技"，钩子是个股。</p>
+            <p>选了工具时：底图换成 K 线+筹码视图，toast 写"主力筹码看泰晶科技"，工具是看个股的视角而不是独立功能。社区分享卡里的"参考工具"链接也走这条路径。</p>
+            <p>"腾讯微证券实盘认证"作为分享图上的角标是 brand 信号，不可点击、不引出独立验真页，保持神操作侧的轻量化。</p>
           </article>
           <article class="context-detail" data-context="kline">
             <h2>K线神操作页</h2>
