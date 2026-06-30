@@ -76,9 +76,11 @@ function bindInteractions() {
   document.querySelectorAll("[data-moments-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      // 资产认证 H5 → 验真承接页；神操作 H5 的回流规则在当前说明区展示，不再单独跳承接页
+      // 资产认证 H5 → 验真承接页；神操作 H5 → 个股 K 线承接画面
       if (link.dataset.momentsLink === "asset") {
         jumpToScreen("asset-landing");
+      } else if (link.dataset.momentsLink === "operation") {
+        jumpToOperationLanding();
       }
     });
   });
@@ -106,6 +108,15 @@ function jumpToScreen(screen) {
     panel.classList.toggle("active", panel.id === `${screen}-screen`);
   });
   updateContext(screen);
+}
+
+function jumpToOperationLanding() {
+  document.querySelectorAll(".screen").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === "kline-screen");
+  });
+  closeOperationPopover();
+  closeModal();
+  updateContext("moments");
 }
 
 function setOpToolState(stateName) {
