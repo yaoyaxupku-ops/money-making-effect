@@ -355,6 +355,31 @@ button {
   font-size: 30px;
 }
 
+.cert-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cert-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 11px;
+  background: rgba(232, 181, 97, 0.12);
+  color: #a8761c;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.cert-chip:hover {
+  background: rgba(232, 181, 97, 0.2);
+}
+
 .cert-button {
   min-width: 76px;
   height: 26px;
@@ -619,68 +644,6 @@ button {
   overflow: hidden;
 }
 
-.stock-landing-toast {
-  position: absolute;
-  top: 96px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: 36px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  width: 340px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 12px 28px rgba(18, 28, 45, 0.18);
-  backdrop-filter: blur(8px);
-  border: 1px solid #ffd8db;
-  z-index: 2;
-}
-
-.stock-landing-toast-thumb {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.stock-landing-toast-thumb.green {
-  background: linear-gradient(135deg, #6dd4a3, #11866f);
-}
-
-.stock-landing-toast-thumb.brand {
-  background: linear-gradient(135deg, #ff7a78, #d94236);
-}
-
-.stock-landing-toast-body {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
-}
-
-.stock-landing-toast-body strong {
-  color: #2a3243;
-  font-size: 13px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.stock-landing-toast-body span {
-  color: #8b95a8;
-  font-size: 11px;
-}
-
-.stock-landing-toast b {
-  color: #2f72ff;
-  font-size: 18px;
-  font-weight: 700;
-}
 
 .operation-popover {
   position: absolute;

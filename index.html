@@ -75,7 +75,10 @@
                   <span class="muted">总资产</span>
                   <strong id="asset-amount">1,268,800.52</strong>
                 </div>
-                <button id="asset-cert-button" class="cert-button">资产认证 ›</button>
+                <div class="cert-entry">
+                  <span id="asset-cert-chip" class="cert-chip">✦ 百万级</span>
+                  <button id="asset-cert-button" class="cert-button">资产认证 ›</button>
+                </div>
               </div>
               <div class="asset-split">
                 <span><i class="dot red-dot"></i>证券及理财 1,008,200.25</span>
@@ -175,7 +178,7 @@
                 <div class="avatar blue">陈</div>
                 <div class="moment-body">
                   <strong>Chen</strong>
-                  <p>这个认证可以点进去验真，比普通截图靠谱很多。</p>
+                  <p>点了一下 H5，是真的——这个认证靠谱。</p>
                 </div>
               </article>
               <article class="moment-post" data-moments-card="operation" hidden>
@@ -244,14 +247,6 @@
             <!-- 两层底图：默认 K 线页，带工具时切换到 K 线+筹码页 -->
             <div class="stock-landing-bg kline" data-landing-bg="kline"></div>
             <div class="stock-landing-bg kline-chips" data-landing-bg="kline-chips" hidden></div>
-            <div class="stock-landing-toast" id="stock-landing-toast">
-              <div class="stock-landing-toast-thumb" id="stock-landing-thumb">看</div>
-              <div class="stock-landing-toast-body">
-                <strong id="stock-landing-title">打开腾讯微证券，了解泰晶科技</strong>
-                <span id="stock-landing-sub">从 TA 的朋友圈神操作分享而来</span>
-              </div>
-              <b>›</b>
-            </div>
           </section>
 
           <section class="screen" id="kline-screen">
@@ -308,8 +303,8 @@
           <article class="context-detail" data-context="stock-landing">
             <h2>个股承接页（神操作 / 社区工具回流专用）</h2>
             <p>神操作的验真必要性低于资产认证（走势 + 买卖点 + 收益是一条可校验链，PS 难度高，观众更关心方法而非真伪），因此朋友圈神操作 H5 卡不走验真路径，直接落到分享提到的<strong>个股 K 线页</strong>——观众点进来时脑子里装的就是这只股票，承接路径最短。</p>
-            <p>未选工具时：底图是普通 K 线页，toast 写"打开腾讯微证券，了解泰晶科技"，钩子是个股。</p>
-            <p>选了工具时：底图换成 K 线+筹码视图，toast 写"主力筹码看泰晶科技"，工具是看个股的视角而不是独立功能。社区分享卡里的"参考工具"链接也走这条路径。</p>
+            <p>未选工具时：直接落到该股票的 K 线页，钩子文案在 H5 卡上："打开腾讯微证券，了解泰晶科技"。</p>
+            <p>选了工具时：直接落到该股票的 K 线+对应工具视图（如 K 线+主力筹码），H5 卡文案是"主力筹码看泰晶科技"——工具是看个股的视角而不是独立功能。社区分享卡里的"参考视角"链接也走这条路径。</p>
             <p>"腾讯微证券实盘认证"作为分享图上的角标是 brand 信号，不可点击、不引出独立验真页，保持神操作侧的轻量化。</p>
           </article>
           <article class="context-detail" data-context="kline">

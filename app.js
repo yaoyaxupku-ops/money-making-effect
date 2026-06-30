@@ -31,10 +31,13 @@ function currentAssetTier() {
 }
 
 function hydrateAssetCertification() {
+  const tier = currentAssetTier();
   document.getElementById("asset-amount").textContent = formatMoney.format(state.assetAmount);
-  // 按钮文案统一为"资产认证 ›"——保留点击吸引力，但不在按钮里夸大用户资产规模。
-  // 等级文案出现在弹窗内部（已获百万实力认证），由 openAssetModal 负责。
+  // 按钮文案保持中性"资产认证 ›"，旁边 chip 显示已达等级作为弱钩子
+  // chip 跟 currentAssetTier 走，不展示精确金额
   document.getElementById("asset-cert-button").textContent = "资产认证 ›";
+  const levelShort = tier.level.replace("资产", "");
+  document.getElementById("asset-cert-chip").textContent = `✦ ${levelShort}`;
 }
 
 function bindInteractions() {
@@ -43,6 +46,7 @@ function bindInteractions() {
   });
 
   document.getElementById("asset-cert-button").addEventListener("click", openAssetModal);
+  document.getElementById("asset-cert-chip").addEventListener("click", openAssetModal);
   document.getElementById("daily-profit-share").addEventListener("click", () => {
     const toast = document.getElementById("daily-profit-toast");
     toast.classList.add("dismissed");
@@ -108,7 +112,7 @@ function jumpToScreen(screen) {
 }
 
 function jumpToStockLanding(stateName) {
-  // 切到 stock-landing 屏，并按"是否带工具"切换底图和 toast
+  // 切到 stock-landing 屏，并按"是否带工具"切换底图
   document.querySelectorAll(".toolbar-button").forEach((b) => b.classList.remove("active"));
   document.querySelectorAll(".screen").forEach((panel) => {
     panel.classList.toggle("active", panel.id === "stock-landing-screen");
@@ -118,23 +122,6 @@ function jumpToStockLanding(stateName) {
   const withTool = stateName === "with";
   document.querySelector('[data-landing-bg="kline"]').hidden = withTool;
   document.querySelector('[data-landing-bg="kline-chips"]').hidden = !withTool;
-
-  const title = document.getElementById("stock-landing-title");
-  const sub = document.getElementById("stock-landing-sub");
-  const thumb = document.getElementById("stock-landing-thumb");
-  if (withTool) {
-    title.textContent = "主力筹码看泰晶科技";
-    sub.textContent = "从 TA 的分享而来 · 已为你切到筹码视角";
-    thumb.textContent = "筹";
-    thumb.classList.remove("brand");
-    thumb.classList.add("green");
-  } else {
-    title.textContent = "打开腾讯微证券，了解泰晶科技";
-    sub.textContent = "从 TA 的朋友圈神操作分享而来";
-    thumb.textContent = "看";
-    thumb.classList.remove("green");
-    thumb.classList.add("brand");
-  }
 }
 
 function setOpToolState(stateName) {
