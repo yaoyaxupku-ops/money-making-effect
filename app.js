@@ -65,11 +65,16 @@ function bindInteractions() {
     tab.addEventListener("click", () => switchMomentsCard(tab.dataset.moments));
   });
 
+  document.querySelectorAll(".op-tool-state-tab").forEach((tab) => {
+    tab.addEventListener("click", () => setOpToolState(tab.dataset.opToolState));
+  });
+
   document.querySelectorAll("[data-moments-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      // 朋友圈 H5 卡片点击 → 跳转到端外验真承接页（demo 中用切换屏幕模拟）
-      jumpToScreen("asset-landing");
+      // 资产认证 H5 → 验真承接页；神操作 H5 → 模拟首页
+      const target = link.dataset.momentsLink === "operation" ? "homepage" : "asset-landing";
+      jumpToScreen(target);
     });
   });
 
@@ -77,8 +82,44 @@ function bindInteractions() {
 }
 
 function jumpToScreen(screen) {
+  // 找工具栏按钮就触发；首页屏没有工具栏入口，直接切 screen + context
   const trigger = document.querySelector(`.toolbar-button[data-screen="${screen}"]`);
-  if (trigger) trigger.click();
+  if (trigger) {
+    trigger.click();
+    return;
+  }
+  document.querySelectorAll(".toolbar-button").forEach((b) => b.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach((panel) => {
+    panel.classList.toggle("active", panel.id === `${screen}-screen`);
+  });
+  updateContext(screen);
+}
+
+function setOpToolState(stateName) {
+  document.querySelectorAll(".op-tool-state-tab").forEach((tab) => {
+    const active = tab.dataset.opToolState === stateName;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+  const title = document.getElementById("op-link-title");
+  const sub = document.getElementById("op-link-sub");
+  const thumb = document.getElementById("op-link-thumb");
+  const toastTitle = document.getElementById("homepage-toast-title");
+  if (stateName === "with") {
+    title.textContent = 'TA 本次参考了"主力筹码"';
+    sub.textContent = "打开腾讯微证券，查看同款工具";
+    thumb.textContent = "工";
+    thumb.classList.remove("brand");
+    thumb.classList.add("green");
+    toastTitle.textContent = "你看到的同款工具 · 主力筹码";
+  } else {
+    title.textContent = "TA 在腾讯微证券完成的实盘操作";
+    sub.textContent = "打开腾讯微证券，查看更多";
+    thumb.textContent = "↗";
+    thumb.classList.remove("green");
+    thumb.classList.add("brand");
+    toastTitle.textContent = "看 TA 完成实盘操作的微证券";
+  }
 }
 
 function switchScreen(sourceButton) {

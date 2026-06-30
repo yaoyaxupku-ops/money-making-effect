@@ -592,6 +592,68 @@ button {
   background-color: #fff;
 }
 
+/* ---------- 模拟微证券首页（神操作分享回流承接） ---------- */
+.homepage-reference-bg {
+  position: relative;
+  height: 100%;
+  background-image: url("./微证券首页.jpg");
+  background-size: 370px auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
+.homepage-tool-toast {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 340px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 28px rgba(18, 28, 45, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffd8db;
+}
+
+.homepage-toast-thumb {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6dd4a3, #11866f);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.homepage-toast-body {
+  display: grid;
+  gap: 2px;
+}
+
+.homepage-toast-body strong {
+  color: #2a3243;
+  font-size: 13px;
+}
+
+.homepage-toast-body span {
+  color: #8b95a8;
+  font-size: 11px;
+}
+
+.homepage-tool-toast b {
+  color: #2f72ff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .operation-popover {
   position: absolute;
   top: 112px;
@@ -1597,6 +1659,36 @@ button {
 
 .moment-link-thumb.green {
   background: linear-gradient(135deg, #6dd4a3, #11866f);
+}
+
+.moment-link-thumb.brand {
+  background: linear-gradient(135deg, #ff7a78, #d94236);
+}
+
+/* ---------- 朋友圈神操作卡：选了 / 未选工具 状态切换 ---------- */
+.op-tool-state-switch {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 3px;
+  border-radius: 8px;
+  background: #f1f3f8;
+}
+
+.op-tool-state-tab {
+  flex: 1;
+  min-height: 26px;
+  border-radius: 6px;
+  background: transparent;
+  color: #5f6b83;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.op-tool-state-tab.active {
+  background: #fff;
+  color: #2a3243;
+  box-shadow: 0 1px 4px rgba(18, 28, 45, 0.08);
 }
 
 .moment-link-card strong {

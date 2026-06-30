@@ -195,11 +195,15 @@
                       <span>2026-06-25 收盘后</span>
                     </div>
                   </div>
+                  <div class="op-tool-state-switch" role="tablist" aria-label="发图时是否选了工具">
+                    <button class="op-tool-state-tab active" data-op-tool-state="with" role="tab" aria-selected="true">选了主力筹码</button>
+                    <button class="op-tool-state-tab" data-op-tool-state="without" role="tab" aria-selected="false">未选工具</button>
+                  </div>
                   <a class="moment-link-card" href="#" data-moments-link="operation">
-                    <div class="moment-link-thumb green">工</div>
+                    <div class="moment-link-thumb green" id="op-link-thumb">工</div>
                     <div>
-                      <strong>TA本次参考了"主力筹码"</strong>
-                      <span>打开腾讯微证券，查看同款工具</span>
+                      <strong id="op-link-title">TA 本次参考了"主力筹码"</strong>
+                      <span id="op-link-sub">打开腾讯微证券，查看同款工具</span>
                     </div>
                   </a>
                   <small>1分钟前  腾讯微证券</small>
@@ -233,6 +237,19 @@
             <div class="landing-actions">
               <button>查看微证券行情</button>
               <button>打开腾讯微证券</button>
+            </div>
+          </section>
+
+          <section class="screen" id="homepage-screen">
+            <div class="homepage-reference-bg" aria-label="微证券首页背景">
+              <div class="homepage-tool-toast" id="homepage-tool-toast">
+                <div class="homepage-toast-thumb">工</div>
+                <div class="homepage-toast-body">
+                  <strong id="homepage-toast-title">你看到的同款工具 · 主力筹码</strong>
+                  <span>从 TA 的朋友圈神操作分享而来</span>
+                </div>
+                <b>›</b>
+              </div>
             </div>
           </section>
 
@@ -282,10 +299,16 @@
             <p>朋友圈承接两种动机：资产认证（带认证码 + 点击验真，强调可信身份）和神操作（纯原始图片 + 独立回流链接卡片，强调”查看同款工具”的回流钩子）。顶部按钮可在两种卡片之间切换。</p>
             <p>资产认证朋友圈卡核心不是晒精确金额，而是展示”百万级资产已认证”的可信身份；神操作朋友圈卡的钩子是工具回流，没有参考工具时改为股票行情入口。</p>
           </article>
-          <article class=”context-detail” data-context=”asset-landing”>
-            <h2>承接验真页</h2>
-            <p>外部用户点击朋友圈链接后进入验真页，主结论是”这张分享图来自腾讯微证券”——验证的是图片本身的来源和完整性，不替用户的当前资产数据做权威背书。截图显示的资产等级标注为”用户自报”，避免越权。</p>
-            <p>这里承担端外自然流量回流：先验证图片真伪，再引导查看行情、打开微证券或继续开户交易。</p>
+          <article class="context-detail" data-context="asset-landing">
+            <h2>承接验真页（资产认证专用）</h2>
+            <p>外部用户点击<strong>朋友圈资产认证 H5 卡</strong>进入这里。主结论是"这张分享图来自腾讯微证券"——验证的是图片本身的来源和完整性，不替用户的当前资产数据做权威背书。截图显示的资产等级标注为"用户自报"，避免越权。</p>
+            <p>这里只承接资产认证一种来路；神操作分享走另一个承接（见下方"模拟首页"），不在这页验真。</p>
+          </article>
+          <article class="context-detail" data-context="homepage">
+            <h2>承接首页（神操作分享专用）</h2>
+            <p>神操作的验真必要性低于资产认证（走势 + 买卖点 + 收益是一条可校验的链，PS 难度高，观众更关心方法而非真伪）。因此朋友圈神操作 H5 卡不再跳验真页，直接跳微证券首页，承接"种草 → 拉新"的回流闭环。</p>
+            <p>顶部 toast 是端外用户点进来时的轻量引导："你看到的同款工具 · 主力筹码"；如果分享时未选工具，toast 改为通用引导"看 TA 完成实盘操作的微证券"。toast 之外的首页内容保持原生，避免劝退。</p>
+            <p>"腾讯微证券实盘认证"作为分享图上的角标，是 brand 信号，不引出独立验真页，保持轻量。</p>
           </article>
           <article class="context-detail" data-context="kline">
             <h2>K线神操作页</h2>
