@@ -251,24 +251,32 @@
 
           <section class="screen" id="kline-screen">
             <div class="kline-reference-bg" aria-label="微证券K线页背景">
-              <article class="operation-popover small" id="operation-popover">
+              <article class="asset-operation-popover operation-popover" id="kline-operation-popover" aria-label="K线神操作弹窗">
+                <button class="operation-close" aria-label="关闭">×</button>
+                <button class="donation-entry donation-corner">赚了捐一笔 ›</button>
                 <div class="operation-mascot">↗</div>
                 <div class="operation-user">单枪匹马的日夜</div>
                 <h2>做T小能手</h2>
+                <p class="operation-headline">一买一卖，节奏在线</p>
                 <div class="operation-chart-card">
-                  <div class="operation-chart-head"><strong>泰晶科技</strong><em>+6.07%</em></div>
+                  <div class="operation-chart-head">
+                    <strong>泰晶科技</strong>
+                    <em>做T收益 +3.21%</em>
+                  </div>
                   <div class="operation-chart-svg" id="kline-chart-svg" aria-hidden="true"></div>
                   <div class="operation-axis"><span>09:30</span><span>11:30</span><span>15:00</span></div>
                 </div>
-                <p class="operation-quote">买入后上涨 5.46%，这次买点踩得很准。</p>
+                <p class="operation-quote">当日低吸高抛，形成正向价差。</p>
+                <div class="operation-tool-chips" role="group" aria-label="本次参考工具">
+                  <button class="tool-chip" data-kline-tool="主力资金">主力资金</button>
+                  <button class="tool-chip active" data-kline-tool="主力筹码">主力筹码</button>
+                  <button class="tool-chip" data-kline-tool="波段宝">波段宝</button>
+                </div>
                 <div class="operation-share-row">
                   <button><b>↗</b><span>分享给朋友</span></button>
                   <button><b>◎</b><span>分享到朋友圈</span></button>
                   <button><b>▣</b><span>保存图片</span></button>
                 </div>
-                <button class="donation-entry">
-                  赚了做点好事，捐一笔
-                </button>
               </article>
             </div>
           </section>
