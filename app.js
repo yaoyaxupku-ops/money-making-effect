@@ -111,12 +111,19 @@ function jumpToScreen(screen) {
 }
 
 function jumpToOperationLanding() {
+  setStockLandingBackground(state.opToolState || "with");
   document.querySelectorAll(".screen").forEach((panel) => {
-    panel.classList.toggle("active", panel.id === "kline-screen");
+    panel.classList.toggle("active", panel.id === "stock-landing-screen");
   });
   closeOperationPopover();
   closeModal();
   updateContext("moments");
+}
+
+function setStockLandingBackground(stateName) {
+  const withTool = stateName === "with";
+  document.querySelector('[data-landing-bg="kline"]').hidden = withTool;
+  document.querySelector('[data-landing-bg="kline-chips"]').hidden = !withTool;
 }
 
 function setOpToolState(stateName) {
