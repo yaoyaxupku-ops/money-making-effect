@@ -11,8 +11,8 @@
       <section class="project-overview" aria-label="项目背景">
         <div class="overview-copy">
           <span>微证券端内赚钱氛围打造</span>
-          <h1>把用户自发晒图，升级成平台认证的资产与实盘高光分享</h1>
-          <p>微证券社区本身就是“看图说话”的股票讨论场，K线截图、持仓截图、交易记录截图是主要信息载体。项目目标是把用户已有的晒盘面、晒操作行为产品化，形成端内氛围、端外传播和验真回流。</p>
+          <h1>围绕实盘神操作和资产成就，放大端内赚钱氛围</h1>
+          <p>微证券社区已形成以截图为核心的信息表达方式，K线截图、持仓截图、交易记录截图是主要内容载体。项目目标是把自发截图升级为标准化、可分享、可回流的内容能力，提升端内互动和端外自然传播。</p>
         </div>
         <div class="overview-stats">
           <div><strong>88.36万</strong><span>近 30 天下单用户</span></div>
@@ -27,14 +27,14 @@
 
       <section class="stage">
         <div class="toolbar" aria-label="页面切换">
-          <button class="toolbar-button active" data-screen="asset" data-context="asset">资产页</button>
-          <button class="toolbar-button" data-screen="asset" data-context="asset" data-modal="cert">资产认证</button>
-          <button class="toolbar-button" data-screen="asset" data-context="operation" data-operation="t-trade">做T弹窗</button>
+          <button class="toolbar-button active" data-screen="asset" data-context="operation" data-operation="t-trade">做T弹窗</button>
           <button class="toolbar-button" data-screen="asset" data-context="operation" data-operation="sell-drop">卖出弹窗</button>
           <button class="toolbar-button" data-screen="operation-community" data-context="operation-community">社区分享</button>
-          <button class="toolbar-button" data-screen="moments" data-context="moments">朋友圈分享</button>
-          <button class="toolbar-button" data-screen="asset-landing" data-context="asset-landing">验真承接</button>
-          <button class="toolbar-button" data-screen="kline" data-context="kline">K线神操作</button>
+          <button class="toolbar-button" data-screen="moments" data-context="moments" data-moments-default="operation">朋友圈分享</button>
+          <button class="toolbar-button" data-screen="asset" data-context="asset">资产页</button>
+          <button class="toolbar-button" data-screen="asset" data-context="asset" data-modal="cert">资产认证</button>
+          <button class="toolbar-button" data-screen="moments" data-context="asset-moments" data-moments-default="asset">资产朋友圈</button>
+          <button class="toolbar-button" data-screen="asset-landing" data-context="asset-landing">资产验真</button>
         </div>
 
         <div class="phone" aria-label="微证券交互原型">
@@ -128,6 +128,7 @@
               <div class="operation-share-row">
                 <button><b>↗</b><span>分享给朋友</span></button>
                 <button><b>◎</b><span>分享到朋友圈</span></button>
+                <button><b>社</b><span>分享到社区</span></button>
                 <button><b>▣</b><span>保存图片</span></button>
               </div>
             </article>
@@ -243,12 +244,6 @@
             </div>
           </section>
 
-          <section class="screen" id="stock-landing-screen">
-            <!-- 两层底图：默认 K 线页，带工具时切换到 K 线+筹码页 -->
-            <div class="stock-landing-bg kline" data-landing-bg="kline"></div>
-            <div class="stock-landing-bg kline-chips" data-landing-bg="kline-chips" hidden></div>
-          </section>
-
           <section class="screen" id="kline-screen">
             <div class="kline-reference-bg" aria-label="微证券K线页背景">
               <article class="asset-operation-popover operation-popover" id="kline-operation-popover" aria-label="K线神操作弹窗">
@@ -275,6 +270,7 @@
                 <div class="operation-share-row">
                   <button><b>↗</b><span>分享给朋友</span></button>
                   <button><b>◎</b><span>分享到朋友圈</span></button>
+                  <button><b>社</b><span>分享到社区</span></button>
                   <button><b>▣</b><span>保存图片</span></button>
                 </div>
               </article>
@@ -285,46 +281,43 @@
 
       <aside class="demo-context" aria-label="项目说明">
         <section class="context-page-panel" aria-label="当前页面说明">
-          <article class="context-detail active" data-context="asset">
+          <article class="context-detail" data-context="asset">
             <h2>资产页：今日战绩与资产实力</h2>
-            <p>今日盈亏分享只与用户自身比较：连续3日盈利、今日收益超过2%、逆势收红、近30日最佳战绩等条件触发轻量 Toast，把高频、即时的”晒今日战绩”动机接住。Demo 中 Toast 文案每 3 秒轮播一次以演示 4 种触发场景。</p>
-            <p>资产分享认证面向长期实力：总资产达到 10万、50万、100万、1000万、1亿等门槛时，按钮文案直接显示等级（如”百万认证”），点击进入对应等级的认证弹窗。</p>
-            <p>前者高频、即时，重点是”晒今日战绩”；后者低频、里程碑式，重点是”晒长期实力”，两种分享动机互补。</p>
+            <p><strong>页面目的：</strong>在资产页承接两类分享动机：今日盈亏属于高频战绩分享，资产认证属于低频里程碑分享。</p>
+            <p><strong>交互规则：</strong>今日盈亏区域保留原分享按钮，命中条件后在按钮旁展示轻量提示；资产认证入口位于总资产附近，点击后打开资产认证弹窗。</p>
+            <p><strong>定量规则：</strong>今日盈亏仅与用户自身历史表现比较，包括连续3日盈利、今日收益超过2%、逆势收红、近30日最佳战绩；资产认证门槛为10万、50万、100万、1000万、1亿。</p>
           </article>
-          <article class="context-detail" data-context="operation">
-            <h2>资产页神操作</h2>
-            <p>资产页原有内容保持不变，收盘后在同一页面上叠加神操作弹窗。顶部按钮可切换"做T小能手"和"卖出后下跌"两种样式。</p>
-            <p>本次参考工具用 3 个 chip 横排直接露出（主力资金、主力筹码、波段宝），用户点选即生效，再次点击取消；"捐一笔"作为右上角轻量入口，避免与底部分享操作堆叠。</p>
-            <div class="context-extension"><h3>公益入口说明</h3><p>"赚了做点好事，捐一笔"为探索项，需公益、法务与合规评估；后续也可调整到资产分析页，不与单次神操作强绑定。</p></div>
+          <article class="context-detail active" data-context="operation">
+            <h2>神操作弹窗</h2>
+            <p><strong>页面目的：</strong>收盘后识别用户当日实盘神操作，把“赚到了、卖准了、做T成功了”的瞬间包装成可分享内容。</p>
+            <p><strong>交互规则：</strong>弹窗覆盖在资产页原页面上方，分时和BS点截图采用用户当日操作高光股票的真实分时走势和BS点位置；主操作按分享给朋友、分享到朋友圈、分享到社区、保存图片排序。</p>
+            <p><strong>定量规则：</strong>做T收益超过3%、买入后上涨超过4%、卖出后下跌超过4%、本次收益超过5%可触发；当日出现多个高光股票时，按收益率最大的股票触发弹窗，卖出后下跌按回避跌幅折算收益率。</p>
+            <p><strong>工具规则：</strong>参考工具暂包括资金条、筹码分布、已开通券商工具（如波段宝），后续可继续扩充；当日收盘前命中相关埋点后展示，用户可主动选择是否带入分享内容。</p>
+            <div class="context-extension"><h3>公益入口说明</h3><p>"赚了捐一笔"为探索入口，需公益、法务与合规评估；位置可后续调整到资产分析页。</p></div>
           </article>
-          <article class="context-detail" data-context="operation-community"><h2>社区分享</h2><p>端内社区使用"用户自己的文字 + 原始神操作图片 + 用户主动选择的参考工具链接"。工具链接是"用 X 看个股"形态（如"主力筹码看泰晶科技"），点击直接落到 K 线+对应工具视图；未选择工具时，工具链接整块不展示。</p></article>
+          <article class="context-detail" data-context="operation-community">
+            <h2>社区分享</h2>
+            <p><strong>页面目的：</strong>把神操作内容沉淀到端内社区，形成可讨论、可复盘的实盘内容。</p>
+            <p><strong>交互规则：</strong>社区内容由用户自己的文字、原始神操作图片、用户主动选择的参考工具组成。未选择工具时，不展示工具链接。</p>
+            <p><strong>回流规则：</strong>工具链接使用“主力筹码看泰晶科技”等个股化文案，点击后进入对应股票的K线页，并打开相应工具视图。</p>
+          </article>
           <article class="context-detail" data-context="moments">
             <h2>朋友圈分享</h2>
-            <p>朋友圈承接两种动机：资产认证（带认证码 + 点击验真，强调可信身份）和神操作（原始图片 + 独立回流链接卡片，承接的是<strong>个股 K 线页</strong>而非工具详情页）。顶部按钮可在两种卡片之间切换。</p>
-            <p>资产认证朋友圈卡核心不是晒精确金额，而是展示"百万级资产已认证"的可信身份；神操作朋友圈卡选了工具时引导观众"用主力筹码看泰晶科技"，未选工具时引导"打开腾讯微证券，了解泰晶科技"，钩子都落在个股上。</p>
+            <p><strong>页面目的：</strong>展示神操作分享到朋友或朋友圈后的外露样式，重点让观看者看到股票、收益结果和回流钩子。</p>
+            <p><strong>交互规则：</strong>外露内容为原始神操作图片加回流链接卡片。选择参考工具时，链接卡片展示“主力筹码看泰晶科技”；未选择工具时，展示“打开腾讯微证券，了解泰晶科技”。</p>
+            <p><strong>端外点击规则：</strong>点击链接后进入对应个股 K 线页；若分享者选择参考工具，则进入 K 线页并打开对应工具视图。不单独设置验真页。</p>
+          </article>
+          <article class="context-detail" data-context="asset-moments">
+            <h2>资产朋友圈</h2>
+            <p><strong>页面目的：</strong>展示资产认证分享到朋友或朋友圈后的外露样式，突出资产等级、认证码和腾讯微证券生成标识。</p>
+            <p><strong>交互规则：</strong>外露内容为资产认证分享图加验真H5卡片。用户可隐藏精确金额，仅展示10万、50万、100万、1000万、1亿对应等级。</p>
+            <p><strong>端外点击规则：</strong>点击H5卡片进入资产验真页，验证分享图片来源和完整性，不验证账户当前实时资产。</p>
           </article>
           <article class="context-detail" data-context="asset-landing">
-            <h2>承接验真页（资产认证专用）</h2>
-            <p>外部用户点击<strong>朋友圈资产认证 H5 卡</strong>进入这里。主结论是"这张分享图来自腾讯微证券"——验证的是图片本身的来源和完整性，不替用户的当前资产数据做权威背书。截图显示的资产等级标注为"用户自报"，避免越权。</p>
-            <p>这里只承接资产认证一种来路；神操作分享走另一个承接（见下方"个股承接页"），不在这页验真。</p>
-          </article>
-          <article class="context-detail" data-context="stock-landing">
-            <h2>个股承接页（神操作 / 社区工具回流专用）</h2>
-            <p>神操作的验真必要性低于资产认证（走势 + 买卖点 + 收益是一条可校验链，PS 难度高，观众更关心方法而非真伪），因此朋友圈神操作 H5 卡不走验真路径，直接落到分享提到的<strong>个股 K 线页</strong>——观众点进来时脑子里装的就是这只股票，承接路径最短。</p>
-            <p>未选工具时：直接落到该股票的 K 线页，钩子文案在 H5 卡上："打开腾讯微证券，了解泰晶科技"。</p>
-            <p>选了工具时：直接落到该股票的 K 线+对应工具视图（如 K 线+主力筹码），H5 卡文案是"主力筹码看泰晶科技"——工具是看个股的视角而不是独立功能。社区分享卡里的"参考视角"链接也走这条路径。</p>
-            <p>"腾讯微证券实盘认证"作为分享图上的角标是 brand 信号，不可点击、不引出独立验真页，保持神操作侧的轻量化。</p>
-          </article>
-          <article class="context-detail" data-context="kline">
-            <h2>K线神操作页</h2>
-            <p>收盘后回到 K 线页，如果当天有买入后上涨、卖出后下跌、做 T 收益等高光操作，生成可分享弹窗。</p>
-            <p>该页沿用社区”看图说话”的表达方式：用户名称、鼓励语、股票名称、走势截图和分享组件组成一张可传播内容卡。</p>
-            <div class="context-extension">
-              <h3>回暖金扩展思路</h3>
-              <p>神操作弹窗底部只放轻量入口：”捐一笔公益，点亮回暖金池”。更完整的规则放到讲解区或后续落地页。</p>
-              <p>合规边界：用户捐赠进入公益项目；回暖金由平台及合作方专项支持，不来自用户公益捐款。</p>
-              <p>亏损侧承接：收盘后发布当天认证实盘亏损贴；ETF 专场只面向活动前已持有且当日亏损用户。</p>
-            </div>
+            <h2>资产验真</h2>
+            <p><strong>页面目的：</strong>承接资产认证H5卡片点击，给出图片验真结果。</p>
+            <p><strong>展示规则：</strong>展示图片指纹、认证码、生成时间和截图等级。截图等级可标注为用户自报。</p>
+            <p><strong>合规边界：</strong>仅验证分享图由腾讯微证券生成且未被二次修改，不代表腾讯微证券对该账户当前资产作额外确认。</p>
           </article>
         </section>
       </aside>
@@ -345,6 +338,7 @@
         <div class="wechat-share-sheet">
           <button data-channel="wechat"><b>↗</b><span>分享给朋友</span><em>朋友点击可验真</em></button>
           <button data-channel="moments"><b>◎</b><span>分享到朋友圈</span><em>自带验真 H5</em></button>
+          <button data-channel="community"><b>社</b><span>分享到社区</span><em>可带认证标识</em></button>
           <button data-channel="save"><b>▣</b><span>保存图片</span><em>含认证码与二维码</em></button>
         </div>
         <p class="modal-foot-note">认证码 123456 · 仅验证本张分享图的来源与完整性</p>

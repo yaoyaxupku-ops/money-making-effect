@@ -110,7 +110,7 @@ button {
 
 .toolbar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 4px;
   width: 390px;
   padding: 4px;
@@ -123,7 +123,7 @@ button {
   border-radius: 6px;
   background: transparent;
   color: #526078;
-  font-size: 12px;
+  font-size: 11px;
   white-space: nowrap;
 }
 
@@ -632,7 +632,7 @@ button {
 }
 
 .stock-landing-bg.kline-chips {
-  background-image: url("./微证券k线+筹码页.jpg");
+  background-image: url("../微证券k线+筹码页.jpg");
 }
 
 .stock-landing-bg[hidden] {
@@ -814,7 +814,7 @@ button {
 
 .operation-share-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   width: 100%;
   padding-top: 1px;
@@ -1436,7 +1436,7 @@ button {
 
 .wechat-share-sheet {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   padding: 14px 14px 18px;
   background: #f2f3f5;
@@ -1452,14 +1452,14 @@ button {
   border-radius: 8px;
   background: transparent;
   color: #4f586d;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .wechat-share-sheet b {
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 12px;
   background: #fff;
   color: #14b15a;

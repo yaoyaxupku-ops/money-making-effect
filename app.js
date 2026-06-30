@@ -76,20 +76,17 @@ function bindInteractions() {
   document.querySelectorAll("[data-moments-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      // 资产认证 H5 → 验真承接页；神操作 H5 → 个股承接页（K 线 / K 线+筹码 二选一）
-      if (link.dataset.momentsLink === "operation") {
-        jumpToStockLanding(state.opToolState || "with");
-      } else {
+      // 资产认证 H5 → 验真承接页；神操作 H5 的回流规则在当前说明区展示，不再单独跳承接页
+      if (link.dataset.momentsLink === "asset") {
         jumpToScreen("asset-landing");
       }
     });
   });
 
-  // 社区分享卡里的"参考工具"链接，点了直接落到 K 线+筹码视图
+  // 社区分享卡里的"参考工具"链接在 Demo 中保持静态展示，真实线上点击落到 K 线+工具视图
   document.querySelectorAll("[data-community-link]").forEach((link) => {
     link.addEventListener("click", (event) => {
       event.preventDefault();
-      jumpToStockLanding(link.dataset.communityLink === "kline-chips" ? "with" : "without");
     });
   });
 
@@ -109,19 +106,6 @@ function jumpToScreen(screen) {
     panel.classList.toggle("active", panel.id === `${screen}-screen`);
   });
   updateContext(screen);
-}
-
-function jumpToStockLanding(stateName) {
-  // 切到 stock-landing 屏，并按"是否带工具"切换底图
-  document.querySelectorAll(".toolbar-button").forEach((b) => b.classList.remove("active"));
-  document.querySelectorAll(".screen").forEach((panel) => {
-    panel.classList.toggle("active", panel.id === "stock-landing-screen");
-  });
-  updateContext("stock-landing");
-
-  const withTool = stateName === "with";
-  document.querySelector('[data-landing-bg="kline"]').hidden = withTool;
-  document.querySelector('[data-landing-bg="kline-chips"]').hidden = !withTool;
 }
 
 function setOpToolState(stateName) {
@@ -175,6 +159,10 @@ function switchScreen(sourceButton) {
   } else {
     closeOperationPopover();
     closeModal();
+  }
+
+  if (screen === "moments" && sourceButton.dataset.momentsDefault) {
+    switchMomentsCard(sourceButton.dataset.momentsDefault);
   }
 }
 
