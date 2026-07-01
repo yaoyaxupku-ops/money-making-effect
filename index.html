@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>微证券端内赚钱氛围打造 Demo</title>
-    <link rel="stylesheet" href="./styles.css?v=20260630-stock-return">
+    <link rel="stylesheet" href="./styles.css?v=20260701-cta-align">
   </head>
   <body>
     <main class="workspace">
@@ -60,7 +60,10 @@
                     <span class="muted">今日盈亏</span>
                     <span class="daily-profit-share-anchor">
                       <button id="daily-profit-share" class="daily-profit-share" aria-label="分享今日盈亏">↗</button>
-                      <span id="daily-profit-toast" class="daily-profit-toast" role="status">连续3日盈利，晒晒今日战绩</span>
+                      <span id="daily-profit-toast" class="daily-profit-toast" role="status">
+                        <span id="daily-profit-toast-text">连续3日盈利，晒晒今日战绩</span>
+                        <button id="daily-profit-toast-close" class="daily-profit-toast-close" aria-label="关闭今日盈亏分享提示">×</button>
+                      </span>
                     </span>
                   </span>
                   <strong class="red">+8,620.35</strong>
@@ -239,14 +242,17 @@
             </section>
             <p class="verification-scope">仅验证分享图的来源及完整性，不代表腾讯微证券对该账户当前资产作额外确认。</p>
             <div class="landing-actions">
-              <button>查看微证券行情</button>
               <button>打开腾讯微证券</button>
+              <button>3分钟极速开户</button>
             </div>
           </section>
 
           <section class="screen" id="stock-landing-screen" aria-label="神操作回流个股页">
             <div class="stock-landing-bg kline" data-landing-bg="kline"></div>
             <div class="stock-landing-bg kline-chips" data-landing-bg="kline-chips" hidden></div>
+            <div class="stock-landing-cta" aria-label="未开户用户承接">
+              <button>3分钟极速开户</button>
+            </div>
           </section>
 
           <section class="screen" id="kline-screen">
@@ -289,8 +295,11 @@
           <article class="context-detail" data-context="asset">
             <h2>资产页：今日战绩与资产实力</h2>
             <p><strong>页面目的：</strong>在资产页承接两类分享动机：今日盈亏属于高频战绩分享，资产认证属于低频里程碑分享。</p>
-            <p><strong>交互规则：</strong>今日盈亏区域保留原分享按钮，命中条件后在按钮旁展示轻量提示；资产认证入口位于总资产附近，点击后打开资产认证弹窗。</p>
-            <p><strong>定量规则：</strong>今日盈亏仅与用户自身历史表现比较，包括连续3日盈利、今日收益超过2%、逆势收红、近30日最佳战绩；资产认证门槛为10万、50万、100万、1000万、1亿。</p>
+            <p><strong>触发时机：</strong>仅在收盘后触发，不做盘中触发。盘中弹窗会干扰正常交易；盘后用户无需盯盘，更适合回看当日表现并自然分享。</p>
+            <p><strong>今日盈亏 toast：</strong>仅与用户自身历史表现比较，候选条件包括连续 3 日盈利、今日收益超 2%、逆势收红、近 30 日最佳战绩。多条命中时按稀缺程度择一展示，优先级为：近 30 日最佳战绩 &gt; 逆势收红 &gt; 连续 3 日盈利 &gt; 今日收益超 2%。Demo 轮播仅用于展示四类候选文案。</p>
+            <p><strong>频控规则：</strong>toast 每日最多出现 1 次；用户点击今日盈亏分享按钮或手动关闭后，当日不再出现。</p>
+            <p><strong>叠层优先级：</strong>同一次进入资产页，若命中神操作则只展示神操作弹窗，当次不再展示 toast；仅在未命中神操作时展示 toast。神操作弹窗仅覆盖在资产页上方，原页面结构不变。</p>
+            <p><strong>资产认证：</strong>入口位于总资产附近，点击后打开认证弹窗；认证门槛为10万、50万、100万、1000万、1亿。</p>
           </article>
           <article class="context-detail active" data-context="operation">
             <h2>神操作弹窗</h2>
@@ -311,6 +320,7 @@
             <p><strong>页面目的：</strong>展示神操作分享到朋友或朋友圈后的外露样式，重点让观看者看到股票、收益结果和回流钩子。</p>
             <p><strong>交互规则：</strong>外露内容为原始神操作图片加回流链接卡片。选择参考工具时，链接卡片展示“主力筹码看泰晶科技”；未选择工具时，展示“打开腾讯微证券，了解泰晶科技”。</p>
             <p><strong>端外点击规则：</strong>点击链接后进入对应个股 K 线页；若分享者选择参考工具，则进入 K 线页并打开对应工具视图。不单独设置验真页。</p>
+            <p><strong>开户承接：</strong>Demo 展示未开户用户场景，保留 K 线页原内容，将底部买入、卖出按钮合并为红色“3分钟极速开户”按钮；已开户或已绑户用户正常展示原买入、卖出按钮。</p>
           </article>
           <article class="context-detail" data-context="asset-moments">
             <h2>资产朋友圈</h2>
@@ -350,6 +360,6 @@
       </section>
     </div>
 
-    <script src="./app.js?v=20260630-stock-return"></script>
+    <script src="./app.js?v=20260701-cta-align"></script>
   </body>
 </html>

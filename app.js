@@ -47,14 +47,8 @@ function bindInteractions() {
 
   document.getElementById("asset-cert-button").addEventListener("click", openAssetModal);
   document.getElementById("asset-cert-chip").addEventListener("click", openAssetModal);
-  document.getElementById("daily-profit-share").addEventListener("click", () => {
-    const toast = document.getElementById("daily-profit-toast");
-    toast.classList.add("dismissed");
-    if (state.toastTimer) {
-      clearInterval(state.toastTimer);
-      state.toastTimer = null;
-    }
-  });
+  document.getElementById("daily-profit-share").addEventListener("click", dismissDailyProfitToast);
+  document.getElementById("daily-profit-toast-close").addEventListener("click", dismissDailyProfitToast);
   document.getElementById("close-modal").addEventListener("click", closeModal);
   document.getElementById("modal-backdrop").addEventListener("click", (event) => {
     if (event.target.id === "modal-backdrop") closeModal();
@@ -93,8 +87,21 @@ function bindInteractions() {
   });
 
   setOperationVariant(state.operationId);
+  setDailyProfitToastSuppressed(true);
   // 默认演示"选了主力筹码"的状态，让朋友圈神操作卡有完整钩子文案
   setOpToolState("with");
+}
+
+function dismissDailyProfitToast() {
+  document.getElementById("daily-profit-toast").classList.add("dismissed");
+  if (state.toastTimer) {
+    clearInterval(state.toastTimer);
+    state.toastTimer = null;
+  }
+}
+
+function setDailyProfitToastSuppressed(suppressed) {
+  document.getElementById("daily-profit-toast").classList.toggle("suppressed", suppressed);
 }
 
 function jumpToScreen(screen) {
@@ -166,12 +173,15 @@ function switchScreen(sourceButton) {
     if (sourceButton.dataset.operation) {
       setOperationVariant(sourceButton.dataset.operation);
       openOperationPopover();
+      setDailyProfitToastSuppressed(true);
       closeModal();
     } else if (sourceButton.dataset.modal === "cert") {
       closeOperationPopover();
+      setDailyProfitToastSuppressed(false);
       openAssetModal();
     } else {
       closeOperationPopover();
+      setDailyProfitToastSuppressed(false);
       closeModal();
     }
   } else {
@@ -261,16 +271,17 @@ function switchMomentsCard(type) {
 
 function startToastRotation() {
   const toast = document.getElementById("daily-profit-toast");
+  const toastText = document.getElementById("daily-profit-toast-text");
   const messages = state.rules.toastMessages || [];
   if (messages.length === 0) return;
-  toast.textContent = messages[0];
+  toastText.textContent = messages[0];
   state.toastIndex = 0;
   state.toastTimer = setInterval(() => {
     if (toast.classList.contains("dismissed")) return;
     state.toastIndex = (state.toastIndex + 1) % messages.length;
     toast.classList.add("rotating");
     setTimeout(() => {
-      toast.textContent = messages[state.toastIndex];
+      toastText.textContent = messages[state.toastIndex];
       toast.classList.remove("rotating");
     }, 180);
   }, 3000);

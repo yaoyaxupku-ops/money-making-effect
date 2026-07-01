@@ -310,7 +310,10 @@ button {
   bottom: 30px;
   left: -52px;
   z-index: 2;
-  padding: 7px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 6px 7px 10px;
   border: 1px solid #f0c679;
   border-radius: 5px;
   background: #fff8e9;
@@ -321,6 +324,19 @@ button {
   line-height: 16px;
   white-space: nowrap;
   transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.daily-profit-toast-close {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #a47732;
+  font-size: 14px;
+  line-height: 1;
 }
 
 .daily-profit-toast::after {
@@ -336,7 +352,8 @@ button {
   transform: rotate(45deg);
 }
 
-.daily-profit-toast.dismissed {
+.daily-profit-toast.dismissed,
+.daily-profit-toast.suppressed {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-3px);
@@ -622,7 +639,7 @@ button {
   position: absolute;
   inset: 0;
   background-size: 370px auto;
-  background-position: center top;
+  background-position: center -44px;
   background-repeat: no-repeat;
   background-color: #fff;
 }
@@ -637,6 +654,30 @@ button {
 
 .stock-landing-bg[hidden] {
   display: none;
+}
+
+.stock-landing-cta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  width: 178px;
+  height: 57px;
+  padding: 4px 8px 17px;
+  background: #fff;
+}
+
+.stock-landing-cta button {
+  width: 100%;
+  height: 36px;
+  border-radius: 5px;
+  background: var(--red);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 #stock-landing-screen {
