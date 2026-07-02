@@ -18,7 +18,7 @@ async function loadRules() {
   hydrateAssetCertification();
   renderMiniChart("operation-chart-svg", state.operationId);
   renderMiniChart("kline-chart-svg", "buy-rise");
-  renderShareChart("community-share-chart", { width: 320, height: 130 });
+  renderShareChart("community-share-chart", { width: 320, height: 156 });
   renderShareChart("moments-share-chart", { width: 320, height: 156 });
   bindInteractions();
   startToastRotation();
@@ -88,7 +88,7 @@ function bindInteractions() {
 
   setOperationVariant(state.operationId);
   setDailyProfitToastSuppressed(true);
-  // 默认演示"选了主力筹码"的状态，让朋友圈神操作卡有完整钩子文案
+  // 默认演示"选了筹码分布"的状态，让朋友圈神操作卡有完整钩子文案
   setOpToolState("with");
 }
 
@@ -140,21 +140,12 @@ function setOpToolState(stateName) {
     tab.classList.toggle("active", active);
     tab.setAttribute("aria-selected", String(active));
   });
+  // 小程序动态卡片标题栏：选了工具走个股化工具文案，未选走通用文案
   const title = document.getElementById("op-link-title");
-  const sub = document.getElementById("op-link-sub");
-  const thumb = document.getElementById("op-link-thumb");
   if (stateName === "with") {
-    title.textContent = "主力筹码看泰晶科技";
-    sub.textContent = "打开腾讯微证券 · 查看同款视角";
-    thumb.textContent = "筹";
-    thumb.classList.remove("brand");
-    thumb.classList.add("green");
+    title.textContent = "筹码分布看泰晶科技";
   } else {
     title.textContent = "打开腾讯微证券，了解泰晶科技";
-    sub.textContent = "TA 在腾讯微证券完成的实盘操作";
-    thumb.textContent = "看";
-    thumb.classList.remove("green");
-    thumb.classList.add("brand");
   }
 }
 

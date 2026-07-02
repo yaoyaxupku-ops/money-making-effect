@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>微证券端内赚钱氛围打造 Demo</title>
-    <link rel="stylesheet" href="./styles.css?v=20260701-cta-align">
+    <link rel="stylesheet" href="./styles.css?v=20260702-chips-rename">
   </head>
   <body>
     <main class="workspace">
@@ -125,7 +125,7 @@
               <p class="operation-quote" id="operation-quote">当日低吸高抛，形成正向价差。</p>
               <div class="operation-tool-chips" id="operation-tool-picker" role="group" aria-label="本次参考工具">
                 <button class="tool-chip" data-tool="主力资金">主力资金</button>
-                <button class="tool-chip" data-tool="主力筹码">主力筹码</button>
+                <button class="tool-chip" data-tool="筹码分布">筹码分布</button>
                 <button class="tool-chip" data-tool="波段宝">波段宝</button>
               </div>
               <div class="operation-share-row">
@@ -142,11 +142,21 @@
             <article class="community-share-post">
               <div class="community-user"><div class="avatar">实盘</div><div><strong>单枪匹马的日夜</strong><span>刚刚</span></div></div>
               <p>今天这波T做得还可以，记录一下。</p>
-              <div class="original-operation-image">
-                <span>原始神操作图片</span><h2>做T小能手</h2><strong>泰晶科技 · 做T收益 +3.21%</strong>
-                <div class="share-chart" id="community-share-chart"></div>
+              <div class="moments-image operation-image" aria-label="原始神操作图片">
+                <div class="operation-image-topline">
+                  <span class="moments-image-kicker">腾讯微证券实盘认证</span>
+                  <span class="operation-image-badge">做T小能手</span>
+                </div>
+                <div class="operation-image-head">
+                  <h3>泰晶科技</h3>
+                  <em><i>做T收益</i>+3.21%</em>
+                </div>
+                <div class="moments-share-chart" id="community-share-chart"></div>
+                <div class="operation-image-foot">
+                  <span>单枪匹马的日夜</span>
+                </div>
               </div>
-              <a class="community-tool-link" href="#" data-community-link="kline-chips"><span>本次参考视角</span><strong>主力筹码看泰晶科技</strong><b>打开 →</b></a>
+              <a class="community-tool-link" href="#" data-community-link="kline-chips"><span>本次参考视角</span><strong>筹码分布看泰晶科技</strong><b>打开 →</b></a>
             </article>
           </section>
 
@@ -190,29 +200,32 @@
                 <div class="moment-body">
                   <strong>Yao</strong>
                   <p>今天这波T做得还可以，记录一下。</p>
-                  <div class="moments-image operation-image">
-                    <span class="moments-image-kicker">腾讯微证券实盘认证</span>
-                    <div class="operation-image-head">
-                      <h3>做T小能手</h3>
-                      <em>+3.21%</em>
+                  <a class="mp-timeline-card" href="#" data-moments-link="operation" aria-label="小程序动态：神操作分享">
+                    <div class="mp-timeline-cover">
+                      <div class="operation-image-topline">
+                        <span class="moments-image-kicker">腾讯微证券实盘认证</span>
+                        <span class="operation-image-badge">做T小能手</span>
+                      </div>
+                      <div class="operation-image-head">
+                        <h3>泰晶科技</h3>
+                        <em><i>做T收益</i>+3.21%</em>
+                      </div>
+                      <div class="moments-share-chart" id="moments-share-chart"></div>
+                      <div class="operation-image-foot">
+                        <span>单枪匹马的日夜</span>
+                      </div>
                     </div>
-                    <div class="moments-share-chart" id="moments-share-chart"></div>
-                    <div class="operation-image-foot">
-                      <span>泰晶科技 · 单枪匹马的日夜</span>
-                      <span>2026-06-25 收盘后</span>
-                    </div>
-                  </div>
-                  <div class="op-tool-state-switch" role="tablist" aria-label="发图时是否选了工具">
-                    <button class="op-tool-state-tab active" data-op-tool-state="with" role="tab" aria-selected="true">选了主力筹码</button>
-                    <button class="op-tool-state-tab" data-op-tool-state="without" role="tab" aria-selected="false">未选工具</button>
-                  </div>
-                  <a class="moment-link-card" href="#" data-moments-link="operation">
-                    <div class="moment-link-thumb green" id="op-link-thumb">看</div>
-                    <div>
-                      <strong id="op-link-title">主力筹码看泰晶科技</strong>
-                      <span id="op-link-sub">打开腾讯微证券 · 查看同款视角</span>
+                    <div class="mp-timeline-bar">
+                      <div class="mp-timeline-logo" id="op-link-thumb">证</div>
+                      <div class="mp-timeline-title" id="op-link-title">筹码分布看泰晶科技</div>
+                      <span class="mp-timeline-more">小程序 ›</span>
                     </div>
                   </a>
+                  <p class="mp-timeline-note">整条为小程序动态（onShareTimeline），点击直达对应个股 K 线页，无需长按或扫码。</p>
+                  <div class="op-tool-state-switch" role="tablist" aria-label="发图时是否选了工具">
+                    <button class="op-tool-state-tab active" data-op-tool-state="with" role="tab" aria-selected="true">选了筹码分布</button>
+                    <button class="op-tool-state-tab" data-op-tool-state="without" role="tab" aria-selected="false">未选工具</button>
+                  </div>
                   <small>1分钟前  腾讯微证券</small>
                 </div>
               </article>
@@ -275,7 +288,7 @@
                 <p class="operation-quote">当日低吸高抛，形成正向价差。</p>
                 <div class="operation-tool-chips" role="group" aria-label="本次参考工具">
                   <button class="tool-chip" data-kline-tool="主力资金">主力资金</button>
-                  <button class="tool-chip active" data-kline-tool="主力筹码">主力筹码</button>
+                  <button class="tool-chip active" data-kline-tool="筹码分布">筹码分布</button>
                   <button class="tool-chip" data-kline-tool="波段宝">波段宝</button>
                 </div>
                 <div class="operation-share-row">
@@ -313,12 +326,12 @@
             <h2>社区分享</h2>
             <p><strong>页面目的：</strong>把神操作内容沉淀到端内社区，形成可讨论、可复盘的实盘内容。</p>
             <p><strong>交互规则：</strong>社区内容由用户自己的文字、原始神操作图片、用户主动选择的参考工具组成。未选择工具时，不展示工具链接。</p>
-            <p><strong>回流规则：</strong>工具链接使用“主力筹码看泰晶科技”等个股化文案，点击后进入对应股票的K线页，并打开相应工具视图。</p>
+            <p><strong>回流规则：</strong>工具链接使用“筹码分布看泰晶科技”等个股化文案，点击后进入对应股票的K线页，并打开相应工具视图。</p>
           </article>
           <article class="context-detail" data-context="moments">
             <h2>朋友圈分享</h2>
             <p><strong>页面目的：</strong>展示神操作分享到朋友或朋友圈后的外露样式，重点让观看者看到股票、收益结果和回流钩子。</p>
-            <p><strong>交互规则：</strong>外露内容为原始神操作图片加回流链接卡片。选择参考工具时，链接卡片展示“主力筹码看泰晶科技”；未选择工具时，展示“打开腾讯微证券，了解泰晶科技”。</p>
+            <p><strong>交互规则：</strong>外露内容为原始神操作图片加回流链接卡片。选择参考工具时，链接卡片展示“筹码分布看泰晶科技”；未选择工具时，展示“打开腾讯微证券，了解泰晶科技”。</p>
             <p><strong>端外点击规则：</strong>点击链接后进入对应个股 K 线页；若分享者选择参考工具，则进入 K 线页并打开对应工具视图。不单独设置验真页。</p>
             <p><strong>开户承接：</strong>Demo 展示未开户用户场景，保留 K 线页原内容，将底部买入、卖出按钮合并为红色“3分钟极速开户”按钮；已开户或已绑户用户正常展示原买入、卖出按钮。</p>
           </article>
@@ -360,6 +373,6 @@
       </section>
     </div>
 
-    <script src="./app.js?v=20260701-cta-align"></script>
+    <script src="./app.js?v=20260702-chips-rename"></script>
   </body>
 </html>

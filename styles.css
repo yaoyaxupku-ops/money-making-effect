@@ -1620,6 +1620,21 @@ button {
   border: 1px solid #ffd1d4;
 }
 
+.operation-image-topline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.operation-image-badge {
+  padding: 3px 10px;
+  border-radius: 5px;
+  background: rgba(214, 66, 66, 0.1);
+  color: #d64242;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .operation-image-head {
   display: flex;
   align-items: baseline;
@@ -1629,15 +1644,25 @@ button {
 .operation-image-head h3 {
   margin: 0;
   color: #2a3243;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
 }
 
 .operation-image-head em {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
   color: #d64242;
-  font-size: 16px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 800;
+}
+
+.operation-image-head em i {
+  color: #8b95a8;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
 }
 
 .moments-share-chart {
@@ -1656,6 +1681,78 @@ button {
   justify-content: space-between;
   color: #8b95a8;
   font-size: 11px;
+}
+
+.operation-image-foot span:first-child {
+  color: #59657b;
+  font-weight: 700;
+}
+
+/* 神操作朋友圈：小程序动态卡片（onShareTimeline，整条可点） */
+.mp-timeline-card {
+  display: block;
+  margin-top: 8px;
+  border: 1px solid #e1e6ee;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mp-timeline-card:hover {
+  border-color: #c9d3e3;
+}
+
+.mp-timeline-cover {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  background: #fff;
+  border-bottom: 1px solid #eef1f6;
+}
+
+.mp-timeline-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: #f7f9fc;
+}
+
+.mp-timeline-logo {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: var(--red);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.mp-timeline-title {
+  flex: 1;
+  color: #2a3243;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mp-timeline-more {
+  color: #9aa3b5;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.mp-timeline-note {
+  margin: 6px 0 0 !important;
+  color: #9aa3b5 !important;
+  font-size: 11px !important;
+  line-height: 1.45;
 }
 
 /* 朋友圈 H5 链接卡（资产认证 + 神操作 共用样式） */
